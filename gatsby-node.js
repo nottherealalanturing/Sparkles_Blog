@@ -67,7 +67,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
         slug: edge.node.slug,
       },
     })
-  }) */
+  }) 
 
   thoughtsRes.data.allContentfulThoughts.edges.forEach(edge => {
     createPage({
@@ -88,4 +88,5 @@ module.exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+  */
 }
