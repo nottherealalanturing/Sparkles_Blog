@@ -20,9 +20,9 @@ const path = require("path")
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const poemsTemplate = path.resolve("./src/public/templates/poems.js")
-  const thoughtTemplate = path.resolve("./src/public/templates/thoughts.js")
-  const reviewsTemplate = path.resolve("./src/public/templates/reviews.js")
+  const PoemsTemplate = path.resolve("src/public/templates/poems.js")
+  const ThoughtTemplate = path.resolve("src/public/templates/thoughts.js")
+  const ReviewsTemplate = path.resolve("src/public/templates/reviews.js")
   const res = await graphql(`
     query {
       allContentfulPoems {
@@ -64,7 +64,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   res.data.allContentfulPoems.edges.forEach(edge => {
     createPage({
-      component: poemsTemplate,
+      component: PoemsTemplate,
       path: `${edge.node.slug}`,
       context: {
         slug: edge.node.slug,
