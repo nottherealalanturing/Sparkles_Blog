@@ -59,7 +59,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  res.data.allContentfulPoems.edges.forEach(edge => {
+  /* res.data.allContentfulPoems.edges.forEach(edge => {
     createPage({
       component: poemsTemplate,
       path: `/poems/${edge.node.slug}`,
@@ -67,7 +67,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
         slug: edge.node.slug,
       },
     })
-  })
+  }) */
 
   thoughtsRes.data.allContentfulThoughts.edges.forEach(edge => {
     createPage({
