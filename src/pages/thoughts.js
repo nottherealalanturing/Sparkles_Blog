@@ -25,6 +25,7 @@ const Thoughts = () => {
       }
     }
   `)
+  let count = +1
   return (
     <>
       <Seo title={"Thoughts"} />
@@ -34,9 +35,9 @@ const Thoughts = () => {
       </Center>
       <SimpleGrid w="full" columns={[1, 2, 2, 3]} spacing="10" p="10">
         {data.allContentfulThoughts.edges.map(edge => {
-          console.log(edge)
           return (
             <Card
+              key={(count += 1)}
               to={`/thoughts/${edge.node.slug}`}
               title={edge.node.title}
               text={

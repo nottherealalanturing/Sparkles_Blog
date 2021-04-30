@@ -25,6 +25,7 @@ const Reviews = () => {
       }
     }
   `)
+  let count = 1
 
   const res = data.allContentfulReviews.edges
   return (
@@ -39,6 +40,7 @@ const Reviews = () => {
           res.map(edge => {
             return (
               <Card
+                key={(count += 1)}
                 to={`/reviews/${edge.node.slug}`}
                 title={edge.node.title}
                 text={
