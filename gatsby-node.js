@@ -34,6 +34,9 @@ module.exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+  if (res.errors) {
+    throw result.errors
+  }
 
   const reviewsRes = await graphql(`
     query {
@@ -59,16 +62,16 @@ module.exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  /* res.data.allContentfulPoems.edges.forEach(edge => {
+  res.data.allContentfulPoems.edges.forEach(edge => {
     createPage({
       component: poemsTemplate,
-      path: `/poems/${edge.node.slug}`,
+      path: `${edge.node.slug}`,
       context: {
         slug: edge.node.slug,
       },
     })
-  }) 
-
+  })
+  /*
   thoughtsRes.data.allContentfulThoughts.edges.forEach(edge => {
     createPage({
       component: thoughtTemplate,
