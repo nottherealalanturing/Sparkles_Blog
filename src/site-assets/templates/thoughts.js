@@ -1,15 +1,9 @@
 import { CalendarIcon, EditIcon } from "@chakra-ui/icons"
-import { Box, HStack } from "@chakra-ui/layout"
-import {
-  Center,
-  Container,
-  Heading,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react"
+import { HStack } from "@chakra-ui/layout"
+import { Center, Heading, Text, useColorModeValue } from "@chakra-ui/react"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { graphql } from "gatsby"
 import React from "react"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Seo from "../../components/seo"
 
 export const query = graphql`
@@ -26,7 +20,13 @@ export const query = graphql`
 `
 const Thoughts = props => {
   const bg = useColorModeValue("#f7fafc", "#171923")
-
+  const options = {
+    renderText: text => {
+      return text.split("\n").reduce((children, textSegment, index) => {
+        return [...children, index > 0 && <br key={index} />, textSegment]
+      }, [])
+    },
+  }
   return (
     <>
       <Seo title={props.data.contentfulThoughts.title} />
@@ -47,13 +47,14 @@ const Thoughts = props => {
           <Text>{props.data.contentfulThoughts.datePublished}</Text>
         </HStack>
       </Center>
-      <Box w={"100%"} boxShadow="lg" p="6" rounded="md" mb={4} bg={bg}>
-        <Container w={"full"} maxW={"100%"}>
+      <Center w={"full"} boxShadow="lg" p="6" rounded="md" mb={4} bg={bg}>
+        <Center maxW={"100%"}>
           {documentToReactComponents(
-            JSON.parse(props.data.contentfulThoughts.body.raw)
+            JSON.parse(props.data.contentfulThoughts.body.raw),
+            options
           )}
-        </Container>
-      </Box>
+        </Center>
+      </Center>
     </>
   )
 }
