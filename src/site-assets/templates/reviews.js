@@ -1,5 +1,5 @@
 import { CalendarIcon, EditIcon } from "@chakra-ui/icons"
-import { HStack } from "@chakra-ui/layout"
+import { Container, HStack } from "@chakra-ui/layout"
 import { Center, Heading, Text, useColorModeValue } from "@chakra-ui/react"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { graphql } from "gatsby"
@@ -48,12 +48,12 @@ const Reviews = props => {
         </HStack>
       </Center>
       <Center w={"full"} boxShadow="lg" p="6" rounded="md" mb={4} bg={bg}>
-        <Center maxW={"100%"} display="flex" flexDirection="column">
+        <Container maxW={"100%"} display="flex" flexDirection="column">
           {documentToReactComponents(
             JSON.parse(props.data.contentfulReviews.body.raw),
             options
           )}
-        </Center>
+        </Container>
       </Center>
     </>
   )

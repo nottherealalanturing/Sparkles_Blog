@@ -48,12 +48,12 @@ const Thoughts = props => {
         </HStack>
       </Center>
       <Center w={"full"} boxShadow="lg" p="6" rounded="md" mb={4} bg={bg}>
-        <Center maxW={"100%"}>
+        <Container maxW={"100%"}>
           {documentToReactComponents(
             JSON.parse(props.data.contentfulThoughts.body.raw),
             options
           )}
-        </Center>
+        </Container>
       </Center>
     </>
   )
