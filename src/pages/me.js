@@ -25,11 +25,7 @@ const Me = () => {
         <Center display="flex" flexDirection="column">
           <BioImage />
           <Container mt={10}>
-            She'll get back to me either today or tomorrow. She'll get back to
-            me either today or tomorrow. She'll get back to me either today or
-            tomorrow. She'll get back to me either today or tomorrow. She'll get
-            back to me either today or tomorrow. She'll get back to me either
-            today or tomorrow. She'll get back to me either today or tomorrow.
+            '...'
           </Container>
         </Center>
       </Box>
