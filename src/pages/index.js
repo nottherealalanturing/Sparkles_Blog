@@ -71,7 +71,6 @@ const IndexPage = ({ data }) => {
     </>
   )
 }
-
 export default IndexPage
 
 export const query = graphql`
