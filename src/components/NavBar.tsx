@@ -67,7 +67,7 @@ const MenuItem = ({
   return (
     <NLink to={to}>
       <Button
-        fontWeight="900"
+        fontWeight="700"
         variant="outline"
         fontSize="md"
         color={color}
