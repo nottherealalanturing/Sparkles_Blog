@@ -8,8 +8,6 @@ import {
   Stack,
   useColorModeValue,
 } from "@chakra-ui/react"
-/* import "@fontsource/raleway/400.css"
-import "@fontsource/open-sans/700.css" */
 import { Link as NLink } from "gatsby"
 import React, { useState } from "react"
 import { DarkModeSwitch } from "./DarkModeSwitch"
@@ -28,7 +26,7 @@ const NavBarContainer = ({
   return (
     <Flex
       as="nav"
-      align="baseline"
+      align="center"
       justify="space-between"
       wrap="wrap"
       w="100%"
@@ -69,9 +67,9 @@ const MenuItem = ({
   return (
     <NLink to={to}>
       <Button
-        fontWeight="bold"
+        fontWeight="900"
         variant="outline"
-        fontSize="xl"
+        fontSize="md"
         color={color}
         display="block"
         {...restProps}
@@ -89,13 +87,10 @@ const MenuLinks = ({ isOpen }: { isOpen: boolean }) => {
       flexBasis={{ base: "100%", md: "auto" }}
     >
       <Stack
-        spacing={[1, 2, 8, 8]}
-        align="baseline"
+        spacing={[1, 1, 1, 1]}
+        align="center"
         justify={["center", "space-between", "flex-end", "flex-end"]}
         direction={["column", "row", "row", "row"]}
-        pt={[4, 4, 0, 0]}
-        pr={{ md: 5 }}
-        m={1}
       >
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/thoughts">Unpolished Thoughts</MenuItem>
@@ -109,21 +104,24 @@ const MenuLinks = ({ isOpen }: { isOpen: boolean }) => {
 const NavBar = ({ siteTitle }: { siteTitle: String }) => {
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <NavBarContainer>
-      <NLink to={"/"}>
-        <Heading
-          bgGradient="linear(to-l, #7928CA, #FF0080)"
-          bgClip="text"
-          m={1}
-          h="55px"
-        >
-          {siteTitle}
-        </Heading>
-      </NLink>
-      <MenuToggle isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} />
-      <MenuLinks isOpen={isOpen} />
-      <DarkModeSwitch />
-    </NavBarContainer>
+    <Box m="0 auto" maxWidth="960px" padding={"0 1.0875rem 1.45rem"} mt={4}>
+      <NavBarContainer>
+        <NLink to={"/"}>
+          <Heading
+            as="h1"
+            bgGradient="linear(to-l, #7928CA, #FF0080)"
+            bgClip="text"
+            m={1}
+            fontSize={["2xl", "2xl", "xd", "2xl"]}
+          >
+            {siteTitle}
+          </Heading>
+        </NLink>
+        <MenuToggle isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} />
+        <MenuLinks isOpen={isOpen} />
+        <DarkModeSwitch />
+      </NavBarContainer>
+    </Box>
   )
 }
 

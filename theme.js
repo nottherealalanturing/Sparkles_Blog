@@ -10,6 +10,12 @@ const config = {
 }
 
 // 3. extend the theme
-const theme = extendTheme({ config })
+const theme = extendTheme({
+  config,
+  fonts: {
+    heading: "Raleway",
+    body: "Raleway",
+  },
+})
 
 export default theme
